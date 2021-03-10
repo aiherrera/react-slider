@@ -1,5 +1,6 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import resolve from '@rollup/plugin-node-resolve'
+import babel from 'rollup-plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
@@ -21,6 +22,11 @@ export default {
     }
   ],
   plugins: [
+    babel({
+      exclude: 'node_modules/**',
+      plugins: ['babel-plugin-styled-components'],
+      presets: ['@babel/preset-env', '@babel/preset-react']
+    }),
     peerDepsExternal(),
     resolve(),
     commonjs(),
