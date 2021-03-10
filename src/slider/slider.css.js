@@ -2,21 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  display: flex;
-  place-content: center;
-  padding: 0;
-  margin: 0;
-  height: 100vh;
+  &.slider-content {
+    display: flex;
+    place-content: center;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+  }
 `
 
 const SliderContent = styled.div`
-  &.slider-content {
-    position: relative;
-    width: 800px;
-    height: 500px;
-    border-radius: 5px;
-    overflow: hidden;
-  }
+  position: relative;
+  width: 800px;
+  height: 500px;
+  border-radius: 5px;
+  overflow: hidden;
 `
 
 const Slides = styled.div`

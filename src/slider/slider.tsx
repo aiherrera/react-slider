@@ -82,8 +82,8 @@ export const Slider: FC<SliderProps> = ({
 
   return (
     <>
-      <Container>
-        <SliderContent className='slider-content' ref={sliderContentRef}>
+      <Container className='slider-container'>
+        <SliderContent ref={sliderContentRef}>
           <Slides>
             {selectorGenerator(images)}
 

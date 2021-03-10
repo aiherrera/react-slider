@@ -1326,7 +1326,7 @@ function v(){return (v=Object.assign||function(e){for(var t=1;t<arguments.length
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 var Container = Ye.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  place-content: center;\n  padding: 0;\n  margin: 0;\n  height: 100vh;\n"])));
-var SliderContent = Ye.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  position: relative;\n  width: 800px;\n  height: 500px;\n  border-radius: 5px;\n  overflow: hidden;\n"])));
+var SliderContent = Ye.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  &.slider-content {\n    position: relative;\n    width: 800px;\n    height: 500px;\n    border-radius: 5px;\n    overflow: hidden;\n  }\n"])));
 var Slides = Ye.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: 500%;\n  height: 500px;\n  display: flex;\n"])));
 var Selector = Ye.input(function (_ref) {
   var position = _ref.position;
@@ -1423,7 +1423,7 @@ var Slider = function (_a) {
     }, [images, timing]);
     return (r__default['default'].createElement(r__default['default'].Fragment, null,
         r__default['default'].createElement(Container, null,
-            r__default['default'].createElement(SliderContent, { ref: sliderContentRef },
+            r__default['default'].createElement(SliderContent, { className: 'slider-content', ref: sliderContentRef },
                 r__default['default'].createElement(Slides, null,
                     selectorGenerator(images),
                     slideGenerator(images),
