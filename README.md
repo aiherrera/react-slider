@@ -49,7 +49,7 @@ const App = () => {
 
   return (
     <>
-      <SliderComponent
+      <Slider
         color={manualColor}
         textColor={textColor}
         backgroundColor={backgroundColor}
