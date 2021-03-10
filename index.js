@@ -1375,9 +1375,10 @@ var Navigation = Ye.div(function (_ref3) {
 var Slider = function (_a) {
     var color = _a.color, vertical = _a.vertical, images = _a.images, timing = _a.timing, showText = _a.showText, paragraph = _a.paragraph, textColor = _a.textColor, backgroundColor = _a.backgroundColor;
     var length = images.length;
+    var sliderContentRef = r$2.createRef();
     var interval;
     var counter = 0;
-    var timingLastValue = 0;
+    var timingLastValue = 3000;
     var Timing = function () {
         interval = setInterval(function () {
             var selector = document.getElementById('selector-' + counter);
@@ -1397,15 +1398,32 @@ var Slider = function (_a) {
             }
         }, timing);
     };
+    var clearTiming = function () {
+        counter = 0;
+        timingLastValue = 3000;
+        clearInterval(interval);
+    };
     r$2.useEffect(function () {
+        sliderContentRef.current.addEventListener('mouseenter', function () {
+            clearTiming();
+        });
+        sliderContentRef.current.addEventListener('mouseleave', function () {
+            clearTiming();
+            Timing();
+        });
         if (length > 0) {
             Timing();
         }
-        return function () { return clearInterval(interval); };
+        return function () {
+            var _a, _b;
+            clearTiming();
+            (_a = sliderContentRef.current) === null || _a === void 0 ? void 0 : _a.removeEventListener('mouseenter', function () { });
+            (_b = sliderContentRef.current) === null || _b === void 0 ? void 0 : _b.removeEventListener('mouseout', function () { });
+        };
     }, [images, timing]);
     return (r__default['default'].createElement(r__default['default'].Fragment, null,
         r__default['default'].createElement(Container, null,
-            r__default['default'].createElement(SliderContent, null,
+            r__default['default'].createElement(SliderContent, { ref: sliderContentRef },
                 r__default['default'].createElement(Slides, null,
                     selectorGenerator(images),
                     slideGenerator(images),
