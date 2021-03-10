@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { createRef, FC, useEffect } from 'react'
 import { SliderProps } from './slider.types'
 import {
   Container,
@@ -23,10 +23,11 @@ export const Slider: FC<SliderProps> = ({
   backgroundColor
 }) => {
   const length = images.length
+  const containerRef = createRef<HTMLDivElement>()
 
   let interval
   let counter = 0
-  let timingLastValue = 0
+  let timingLastValue = 3000
 
   const Timing = () => {
     interval = setInterval(() => {
@@ -52,17 +53,36 @@ export const Slider: FC<SliderProps> = ({
     }, timing)
   }
 
+  const clearTiming = () => {
+    counter = 0
+    timingLastValue = 3000
+    clearInterval(interval)
+  }
+
   useEffect(() => {
+    containerRef.current.addEventListener('mouseenter', () => {
+      clearTiming()
+    })
+
+    containerRef.current.addEventListener('mouseleave', () => {
+      clearTiming()
+      Timing()
+    })
+
     if (length > 0) {
       Timing()
     }
 
-    return () => clearInterval(interval)
+    return () => {
+      clearTiming()
+      containerRef.current?.removeEventListener('mouseenter', () => {})
+      containerRef.current?.removeEventListener('mouseout', () => {})
+    }
   }, [images, timing])
 
   return (
     <>
-      <Container>
+      <Container ref={containerRef}>
         <SliderContent>
           <Slides>
             {selectorGenerator(images)}
