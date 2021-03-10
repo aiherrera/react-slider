@@ -10,11 +10,13 @@ const Container = styled.div`
 `
 
 const SliderContent = styled.div`
-  position: relative;
-  width: 800px;
-  height: 500px;
-  border-radius: 5px;
-  overflow: hidden;
+  &.slider-content {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
 `
 
 const Slides = styled.div`
