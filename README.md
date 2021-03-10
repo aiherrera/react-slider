@@ -1,42 +1,80 @@
-# React Component Library
+# Slider for React
 
-[![Build status](https://badge.buildkite.com/90ff98db996bb137c5be1bdce666c4b1ce68a25b17af0a6a04.svg?branch=master)](https://buildkite.com/harvey/react-component-library)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+A simple and easy to use react slider
 
-### **Note**: This is an simplified & customized fork from [react-component-library](https://github.com/HarveyD/react-component-library) by Harvey Delaney
+## Installation
 
-This project skeleton was created to help people get started with creating their own React component library using:
+Requires **React 16 or later**
 
-- [Rollup](https://github.com/rollup/rollup)
-- [Sass](https://sass-lang.com/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/) to help you create and show off your components
-- [Jest](https://jestjs.io/) and [React Testing Library](https://github.com/testing-library/react-testing-library) enabling testing of the components
+`npm i --save @aiherrera/react-slider`
 
-## Development
+`# or`
 
-### Testing
+`yarn add @aiherrera/react-slider`
 
-```
-npm run test
-```
+## Demo
 
-### Building
+You can check all the configurations in this [Ai-CoderLab](https://coderlab.aiherrera.com/?path=/story/playground-react-components--slider)
+
+## Usage
+
+`{ Slider }`
 
 ```
-npm run build
-```
+// ES5 syntax
+const Slider = require('@aiherrera/react-slider')
 
-### Storybook
-
-To run a live-reload Storybook server on your local machine:
-
-```
-npm run storybook
-```
-
-To export your Storybook as static files:
+// ES6 syntax
+import Slider from '@aiherrera/react-slider'
 
 ```
-npm run storybook:build
+
+### Full example
+
+```typescript
+import React from 'react'
+
+import Slider from '@aiherrera/react-slider'
+
+const App = () => {
+  const manualColor = '#7474e7'
+  const vertical = false
+  const timing = 3000
+  const images = []
+  const showText = false
+  const paragraph =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ut eveniet ad exercitationem, ducimus mollitia alias debitis magnam atque animi illo officiis eum numquam iure suscipit, iste nisi. Excepturi, rem!'
+  const textColor = '#F1EAEA'
+  const backgroundColor = '#4949D8'
+
+  return (
+    <>
+      <SliderComponent
+        color={manualColor}
+        textColor={textColor}
+        backgroundColor={backgroundColor}
+        timing={timing}
+        showText={showText}
+        paragraph={paragraph}
+        vertical={vertical}
+        images={images}
+      />
+    </>
+  )
+}
 ```
+
+## Props
+
+All these props are passed as defaults and can be overriden any time.
+
+| Name            | Type    | Unit | Description                                        | Default |
+| --------------- | ------- | ---- | -------------------------------------------------- | ------- |
+| color           | string  | N/A  | Manual navigation color                            | #7474e7 |
+| textColor       | string  | N/A  | Paragraph color                                    | #F1EAEA |
+| backgroundColor | string  | N/A  | Paragraph background color                         | #4949D8 |
+| timing          | number  | N/A  | Time in ms of slides transition                    | 3000ms  |
+| showText        | boolean | N/A  | Wether or not to show the paragraph                | false   |
+| paragraph       | string  | N/A  | The text of the paragraph                          | ''      |
+| vertical        | boolean | N/A  | Switches the manual navigation vertical/horizontal | false   |
+| images          | array   | N/A  | A collection of images for the slides              | []      |
